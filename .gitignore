@@ -7,6 +7,3 @@ img/Thumbs.db
 node_modules
 .sass-cache
 .ruby-version
-assets/fonts/fontawesome-webfont.svg
-assets/fonts/fontawesome-webfont.svg~HEAD
-resources/font-awesome/fonts/fontawesome-webfont.svg
