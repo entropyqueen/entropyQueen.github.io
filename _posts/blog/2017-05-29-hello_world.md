@@ -17,4 +17,4 @@ Let's make a short presentation, my name is Quentin, but I am more active under 
 
 Anyway, I hope you'll enjoy what I do, see you in a next article!
 
-ark.
+ark
