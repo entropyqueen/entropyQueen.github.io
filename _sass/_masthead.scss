@@ -35,16 +35,16 @@
 .site-logo {
 
   img {
-    width: 100px;
+    width: auto;
     height: 100px;
 
     @include media($medium) {
-      width: 150px;
+      width: auto;
       height: 150px;
     }
 
     @include media($large) {
-      width: 200px;
+      width: auto;
       height: 200px;
     }
   }
