@@ -1,28 +1,50 @@
-# So Simple Theme
+# Ink
 
-Looking for a simple, responsive, theme for your Jekyll powered blog? Well look no further. Here be **So Simple Theme**, the followup to [**Minimal Mistakes**](http://mmistakes.github.io/minimal-mistakes/) -- by designer slash illustrator [Michael Rose](http://mademistakes.com).
+Ink is a minmal two-column theme for [Jekyll](http://jekyllrb.com) 
 
-## Notable features:
+![Screenshot](https://s32.postimg.org/gdtp6pw1x/ink.png)
 
-* Compatible with Jekyll 3 and GitHub Pages.
-* Responsive templates. Looks good on mobile, tablet, and desktop devices.
-* Gracefully degrading in older browsers. Compatible with Internet Explorer 9+ and all modern browsers.
-* Minimal embellishments and subtle animations.
-* Optional large feature images for posts and pages.
-* [Custom 404 page](http://mmistakes.github.io/so-simple-theme/404.html) to get you started.
-* Basic [search capabilities](https://github.com/mathaywarduk/jekyll-search)
-* Support for Disqus Comments
+# Installation 
 
-![screenshot of So Simple Theme](http://mmistakes.github.io/so-simple-theme/images/so-simple-theme-preview.jpg)
+##### Setup on your local machine
+ * Clone or download the repository
+ * You should have [ruby](https://www.ruby-lang.org/en/) installed in your system
+ * Install bundler which helps in specifying and installing dependencies of any Ruby project ```gem install bundler```
+ * Go to the root of the repo and run this - ```bundle install```
+ * Then - ```bundle exec jekyll serve```
 
-See a [live version of So Simple](http://mmistakes.github.io/so-simple-theme/) hosted on GitHub.
+##### Make it your own
+ * Fork the repository
+ * Follow the configuration step
+ * Host your site/blog with **Ink**
 
----
+# Configuration 
+ * Change the following in ```_config.yml```
+ ```
+    name:               "Ink"
+    description:        "A minimalistic jekyll theme for humans"
+    url:                ""
+    author:             "thinker3197"
+    email:              "jhondoe@abc.com"
+    gravatar_hash:      "205e460b479e2e5b48aec07710c08d50"
+    twitter:            "jhondoe"
+    email:              "jhondoe@abc.com"
+    github:             "jhondoe"
+    pinterest:          "jhondoe"
+    linkedin:           "jhondoe"
+    facebook:           "jhondoe"
+    
+ ```
+ * Set the number of posts that appear in each page by changing the ```paginate``` option in ```_config.yml``` file. Default value is 5.
+ * Add more navigation menus in the ```nav``` section in ```_config.yml```. 
+ * Add your custom url in ```url``` option. Example : http://thinker3197.github.io/blog. Consult the ```gh-pages``` branch to see the basic setup for a blog.
+ * Add your custom background by adding a custom background link in the ```background``` option in ```_config.yml```.
+ 
+# Licensce
 
-## Getting Started
+Open sourced under [MIT LICENSE](https://github.com/thinker3197/ink/blob/master/LICENSE) 
 
-So Simple takes advantage of Sass and data files to make customizing easier and requires Jekyll 3.x.
 
-To learn how to install and use this theme check out the [Setup Guide](http://mmistakes.github.io/so-simple-theme/theme-setup/) for more information.
 
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/mmistakes/so-simple-theme/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
+
