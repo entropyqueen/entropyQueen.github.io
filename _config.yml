@@ -39,7 +39,7 @@ exclude: ["lib", "config.rb", "Capfile", "config", "log", "Rakefile", "Rakefile.
 # Site owner
 owner:
   name: ark
-  avatar: avatar.png
+  avatar: psyduck.png
   email: quentrg@gmail.com
   disqus-shortname:
   twitter: Ark_444
