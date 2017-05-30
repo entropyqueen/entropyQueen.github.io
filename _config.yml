@@ -1,60 +1,37 @@
-# Site wide configuration
-
-title: 'Arksec: IT fun and security'
-locale: en_US
+# Site settings
+title: ArkSec
+url: ""    # the protocol and hostname of your site, eg. `http://laobubu.github.io`
+baseurl: "/" the prefix of your site uri, eg. `/jekyll-theme-EasyBook` or just one slash `/`
+#timezone: Asia/Chongqing
 description: >
-    This blog's purpose is for me to post articles and informations about IT security.
-    I like to share my findings and experiments and hope that some of you out there will find them worth it.
-logo: banner.bmp
-search: true
-url: ''
+    IT security and proof of concept.    
 
-# Jekyll configuration
+# Your information
+email: quentrg@gmail.com
+author: ark
+avatar: "//www.gravatar.com/avatar/af9c07b77fee746d0e34622857671a03?d=mm&s=135"
+profile: 
+twitter_username: Ark_444
+github_username: Ark444
 
-permalink:   /:categories/:title/
-markdown:    kramdown
-highlighter: rouge
-sass:
-  sass_dir: _sass
-  style: compressed
+# Comment Service (Disqus or 多说)
+#  choose one and un-comment the line to active it
+disqus_shortname: ark444-github-io.disqus.com get one: https://disqus.com/admin/signup/
+#duoshuo_shortname: xxx  # get one: http://duoshuo.com/create-site/
+
+permalink: /archivers/:title
 gems:
-  - jekyll-sitemap
-  - jekyll-gist
-  - jekyll-feed
+ - jekyll-paginate
+ - jekyll-gist
+ - jemoji
+
+# Build settings
+paginate: 5
+paginate_path: "page:num"
+
+highlighter: rouge
+markdown: kramdown
 
 kramdown:
   input: GFM
-  auto_ids: true
-  footnote_nr: 1
-  entity_output: as_char
-  toc_levels: 1..2
-  enable_coderay: false
-
-mathjax: true
-
-include: [".htaccess"]
-exclude: ["lib", "config.rb", "Capfile", "config", "log", "Rakefile", "Rakefile.rb", "tmp", ".less", "*.sublime-project", "*.sublime-workspace", "test", "spec", "Gruntfile.js", "package.json", "node_modules", "Gemfile", "Gemfile.lock", "LICENSE", "README.md", "vendor"]
-
-
-# Site owner
-owner:
-  name: ark
-  avatar: psyduck.png
-  email: quentrg@gmail.com
-  disqus-shortname:
-  twitter: Ark_444
-  github: Ark444
-  #  stackexchange: #http://stackoverflow.com/users/123456/username
-  #  linkedin: #username
-  #  instagram: #username
-  #  flickr: #username
-  #  tumblr: #username
-  #  pinterest: #username
-  #  weibo: #userid
-  #  google:
-  #    plus:
-  #    analytics:
-  #    verify:
-  #    ad-client:
-  #    ad-slot:
-  #  bing-verify:
+  syntax_highlighter: rouge
