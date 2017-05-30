@@ -2,7 +2,7 @@
 layout: page
 title: About
 permalink: /about/
-public: true
+public: false
 ---
 
 Welcome to this website!
