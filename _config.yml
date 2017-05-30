@@ -25,6 +25,8 @@ gems:
  - jekyll-gist
  - jemoji
 
+banner: "/images/banner.jpg"
+
 # Build settings
 paginate: 5
 paginate_path: "page:num"
