@@ -9,7 +9,7 @@ image:
 date: 2017-05-29 14:53:22 +0200
 modified: 2017-05-29 14:53:22 +0200
 ---
-Hello world!
+Hello world and welcome to this place!
 
 This is my first post, it will serves 2 main purposes. Firstly, for myself as a test post, and secondly, for you, the reader. This is my personal blog, I'll write articles about the stuff I do, the stuff I try, mainly research in IT security, maybe other topics. I just need to explain some things to people and express myself!
 
