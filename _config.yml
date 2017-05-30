@@ -25,7 +25,7 @@ gems:
  - jekyll-gist
  - jemoji
 
-banner: "/images/banner.jpg"
+banner: "/images/banner.bmp"
 
 # Build settings
 paginate: 5
