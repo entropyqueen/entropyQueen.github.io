@@ -1,6 +1,9 @@
 <header class="header">
   <div class="wrapper">
-    <a class="site-title" href="{{ site.baseurl }}/">{{ site.title }}</a>
+    <a class="site-title" href="{{ site.baseurl }}/">
+		<center>{{ site.title }} </center><br>
+		<img src='/images/banner.bmp' class="banner">
+	</a>
     <nav class="site-nav">
       {% for page in site.pages %}
         {% if page.title and page.public %}
@@ -8,6 +11,5 @@
         {% endif %}
       {% endfor %}
     </nav>
-	<img src='/images/banner.bmp' class="banner">
   </div>
 </header>
