@@ -330,8 +330,8 @@ From now, you can use the command `help` to list the different commands. It will
 # Conclusion and alternatives
 
 In conclusion, I'd say that it is a nice tool to have to mess around IoT devices, it is easy of use, pretty cheap, and leaves room for improvement since it is open source.
-However, it is slow, and I had some issues sniffing communications in I²C between a NOR memory and its micro-controller because the operating frequency of the IoT device was much higher than what the bus pirate can handle. A faster alternative called HardSploit is being developed by the French company Serma safety and security. I had the opportunity to try it during a formation, and I might make a post about it someday in the future. Currently, HardSploit have an open source community version, which costs around 300€. It's not as cheap as the bus pirate, but it is more user friendly.
-Another alternative I came across on the web is the HydraBus, which seems to be pretty interesting given all the protocols it theoretically handle, the use of a Cortex M4 micro-controller and all this for only $69. Unfortunately, I couldn't test it yet.
+However, it is slow, and I had some issues sniffing communications in I²C between a NOR memory and its micro-controller because the operating frequency of the IoT device was much higher than what the bus pirate can handle. A faster alternative called [HardSploit](https://hardsploit.io/) is being developed by the French company Serma safety and security. I had the opportunity to try it during a formation, and I might make a post about it someday in the future. Currently, HardSploit have an open source community version, which costs around 300€. It's not as cheap as the bus pirate, but it is more user friendly.
+Another alternative I came across on the web is the [HydraBus](https://hydrabus.com/), which seems to be pretty interesting given all the protocols it theoretically handle, the use of a Cortex M4 micro-controller and all this for only $69. Unfortunately, I couldn't test it yet.
 
 That's all for today, see you folks!
 
@@ -342,4 +342,3 @@ That's all for today, see you folks!
 [cable_pinout]: http://dangerousprototypes.com/docs/images/1/1a/Seed-cable.png "Dangerous prototypes seeed cable"
 [uart_connector]: /images/posts/bus_pirate/uart_connector.jpg "UART Connector"
 
-[seed_studio]: https://www.seeedstudio.com/Bus-Pirate-v3.6-universal-serial-interface-p-609.html
