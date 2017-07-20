@@ -68,10 +68,10 @@ Another alternative I came across on the web is the HydraBus, which seems to be 
 
 That's all for today, see you folks!
 
-[bus_pirate]: /images/posts/Bus_Pirate/bus_pirate.jpg "Bus Pirate"
+[bus_pirate]: /images/posts/bus_Pirate/bus_pirate.jpg "Bus Pirate"
 [clipper_cable]: https://statics3.seeedstudio.com/images/probekit_LRG.jpg "Clipper Cable"
-[cable_without_clipper]: /images/posts/Bus_Pirate/cable_without_clippers.jpg "Cable without clippers"
-[clippers]: /images/posts/Bus_Pirate/clippers.jpg "Clippers"
+[cable_without_clipper]: /images/posts/bus_Pirate/cable_without_clippers.jpg "Cable without clippers"
+[clippers]: /images/posts/bus_Pirate/clippers.jpg "Clippers"
 [cable_pinout]: http://dangerousprototypes.com/docs/images/1/1a/Seed-cable.png "Dangerous prototypes seeed cable"
 
 [seed_studio]: https://www.seeedstudio.com/Bus-Pirate-v3.6-universal-serial-interface-p-609.html
