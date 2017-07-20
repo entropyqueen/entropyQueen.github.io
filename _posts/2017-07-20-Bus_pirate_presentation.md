@@ -36,11 +36,16 @@ The point that still bugs me with the v4 is that there is no support for JTAG ov
 In order to properly work with this tool, you will need at least a USB cable with a USB mini B port and a set of cables/probes to attach to the device you want to test/speak with/attack.
 
 I use two types of probes cables: 
-* One with clippers attached: ![Clipper cable][clipper_cable]
-* One without, with some external clippers: ![cable without clippers][cable_without_clipper]
+* One with clippers attached:
+
+![Clipper cable][clipper_cable]
+* One without, with some external clippers:
+
+![cable without clippers][cable_without_clipper]
 ![clippers][clippers]
 
 Here is the pinout of both cables:
+
 ![cable pinout][cable_pinout]
 
 # Basic setup
