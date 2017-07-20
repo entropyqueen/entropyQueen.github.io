@@ -20,7 +20,7 @@ for this first post, I wanted to make a small presentation of the bus pirate, wh
 
 The bus pirate is a small hardware board that permits an easy interfacing between your computer and some of the important protocols that we found in hardware communications, such as: 
  * UART
- * JTAG/SWD
+ * JTAG
  * SPI
  * I²C
  * And more…
@@ -216,21 +216,116 @@ But before we execute any macro, we must plug the BP to the target device.
 
 ## cable configuration
 
-To do so, you will need to locate the UART connector on your target, some are hidden, some aren't, you might need a multimeter to find them.
+To do so, you will need to locate the UART connector on your target, some are hidden, some aren't, you might need a multimeter and a few datasheets to find them.
 
 Here's an example of what it can look like:
 ![connector pin][uart_connector]
 
 So, basically, it can be anything, good luck finding them! :)
 
-The UART protocol is 
+The UART bus is made of just two wires: the receiver, RX, and the transmitter, TX. There should also be a PIN connected to GND, allowing the BP to know when the signal is down.
 
-# JTAG/SWD with openOCD
+We will thus need 3 cables from the BP cable: MISO, MOSI and GND, which we will respectively plug onto the target:
 
-install openOCD
-BP pinout
-basic setup for BP interface
-how to get your target config
+| Bus Pirate    | Target      |
+| ------------- |-------------|
+| MISO          | RX          |
+| MOSI          | TX          |
+| GND           | GND         |
+
+When that's done, you can use the macro from the latter step to start communicating from your computer to your target device.
+
+The UART interfaces are fun and all, you will sometimes find a tty, sometimes a custom prompt, maybe only a log activity… It has many applications.
+However if we want do delve more into what's running on our target, we might want to look at more interesting interfaces such as JTAG or SWD.
+
+# JTAG with openOCD
+
+The JTAG interface is designed for debugging electronic systems, it can also be used for accessing registers or memory on a micro controller. 
+
+## JTAG pinout
+
+| Bus Pirate    | Target      |
+| ------------- |-------------|
+| MISO          | TDI         |
+| MOSI          | TDO         |
+| CS            | TMS         |
+| GND           | GND         |
+
+## OpenOCD installation and configuration
+
+[OpenOCD](http://openocd.org/) is a generic open source software.
+> The Open On-Chip Debugger (OpenOCD) aims to provide debugging, in-system programming and boundary-scan testing for embedded target devices.
+
+Since it is generic, it can adapt itself to multiple processors and devices, but that requires a bit of configuration before being plug-n-play.
+
+### Installation
+
+OpenOCD is an open source software, so if you're running on a GNU/Linux system you'll mostly find it in your distribution's package list.
+If you're running on Windows, ~~no luck for you~~, you will find the package [here](http://gnutoolchains.com/arm-eabi/openocd/).
+
+### Configuration
+
+#### Configuring the interface
+
+Firstly, we need to configure our interface (the bus pirate), in order to do so, create a file `buspirate.cfg` with the following content:
+
+```
+#
+# Buspirate with OpenOCD support
+#
+# http://dangerousprototypes.com/bus-pirate-manual/
+#
+
+interface buspirate
+
+# you need to specify port on which BP lives
+# this can be /dev/ttyUSB0 or other,
+# but if you added the udev rule it will display as 
+# /dev/buspirate.
+buspirate_port /dev/buspirate
+
+# communication speed setting
+buspirate_speed normal ;# or fast
+
+# voltage regulator Enabled = 1 Disabled = 0
+buspirate_vreg 0
+
+# pin mode normal or open-drain
+buspirate_mode normal
+
+# pullup state Enabled = 1 Disabled = 0
+buspirate_pullup 0
+
+# this depends on the cable, you are safe with this option
+reset_config srst_only
+```
+
+#### Configuring the micro-controller
+
+For this step, you will need to identify the micro-controller that is connected to your JTAG interface, then look into the target configuration files of OpenOCD to find the correct one.
+
+The configuration files are either located in:
+`/usr/local/share/openocd/scripts/target/`
+or
+`/usr/share/openocd/scripts/target/`
+
+If you can't find the file corresponding to your micro controller, well… You are out of luck and will need to provide it yourself. (Get a datasheet, get the documentation for OpenOCD, create your file and share it to the community!)
+
+### Usage
+
+When you've found it there is not much left to do, launch a terminal, and run openOCD with your configuration files.
+Please note that openocd is a daemon, you will need another terminal to connect to it (or you can run it in the background).
+
+For example: 
+`openocd -f buspirate.cfg -f /usr/local/share/openocd/scripts/target/stm32f2x.cfg`
+
+Then open another terminal and connect to openOCD's interface using telnet or netcat.
+
+`nc localhost 4444`
+
+*As a side note: I like to add the `rlwrap` command before `nc`, that allows us to have better line editing capabilities*
+
+From now, you can use the command `help` to list the different commands. It will be different for each micro-controller, so yeah, have fun, try stuff, discover…
 
 # Conclusion and alternatives
 
