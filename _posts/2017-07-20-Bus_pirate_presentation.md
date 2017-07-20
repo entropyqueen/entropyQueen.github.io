@@ -10,7 +10,6 @@ date: 2017-07-20 10:49:25 +0200
 modified: 2017-07-20 10:49:25 +0200
 ---
 Hello people,
-
 for this first post, I wanted to make a *small* presentation of the bus pirate, which is a hardware tool I use a lot in my experimentations on IoT.
 
 # Overview
@@ -27,8 +26,10 @@ The bus pirate is a small hardware board that permits an easy interfacing betwee
 
 It is useful for debugging, reading memories, sniffing data, writing data…
 
-It have been developed by [Dangerous Prototypes](http://dangerousprototypes.com/), you can find many resources and documentation there.
+It has been developed by [Dangerous Prototypes](http://dangerousprototypes.com/), you can find many resources and documentation there.
+
 There is currently multiples versions of the bus pirate, I personally have the Bus Pirate v3.6 but the most recent one is the version 4. You can find the design improvement [here](http://dangerousprototypes.com/docs/Bus_Pirate_v4_design_overview), and a comparison between the two version [here](http://dangerousprototypes.com/docs/Bus_Pirate_v4_vs_v3_comparison).
+
 The point that still bugs me with the v4 is that there is no support for JTAG over openOCD yet. Though it might come in a near future, I'd recommend ordering the version 3.6.
 
 ## Cables
@@ -323,7 +324,9 @@ From now, you can use the command `help` to list the different commands. It will
 # Conclusion and alternatives
 
 In conclusion, I'd say that it is a nice tool to have to mess around IoT devices, it is easy of use, pretty cheap, and leaves room for improvement since it is open source.
+
 However, it is slow, and I had some issues sniffing communications in I²C between a NOR memory and its micro-controller because the operating frequency of the IoT device was much higher than what the bus pirate can handle. A faster alternative called [HardSploit](https://hardsploit.io/) is being developed by the French company Serma safety and security. I had the opportunity to try it during a formation, and I might make a post about it someday in the future. Currently, HardSploit have an open source community version, which costs around 300€. It's not as cheap as the bus pirate, but it is more user friendly.
+
 Another alternative I came across on the web is the [HydraBus](https://hydrabus.com/), which seems to be pretty interesting given all the protocols it theoretically handle, the use of a Cortex M4 micro-controller and all this for only $69. Unfortunately, I couldn't test it yet.
 
 That's all for today, see you folks!
