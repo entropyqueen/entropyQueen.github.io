@@ -11,7 +11,7 @@ modified: 2017-07-20 10:49:25 +0200
 ---
 Hello people,
 
-for this first post, I wanted to make a small presentation of the bus pirate, which is a hardware tool I use a lot in my experimentations on IoT.
+for this first post, I wanted to make a *small* presentation of the bus pirate, which is a hardware tool I use a lot in my experimentations on IoT.
 
 # Overview
 ## Bus pirate
@@ -35,17 +35,10 @@ The point that still bugs me with the v4 is that there is no support for JTAG ov
 
 In order to properly work with this tool, you will need at least a USB cable with a USB mini B port and a set of cables/probes to attach to the device you want to test/speak with/attack.
 
-I use two types of probes cables: 
-* One with clippers attached:
-
+I use this set of probes cables (which you can easily find online):
 ![Clipper cable][clipper_cable]
-* One without, with some external clippers:
 
-![cable without clippers][cable_without_clipper]
-![clippers][clippers]
-
-Here is the pinout of both cables:
-
+Here is the pinout of the cable:
 ![cable pinout][cable_pinout]
 
 Anyway, that's pretty much it for the hardware part, let's start exploring what we can do with it!
@@ -68,7 +61,7 @@ SUBSYSTEM=="tty", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6001", GROUP="user
 What this does is that it matches the idVendor and idProduct of the bus pirate when you plug it in, and will create a symlink located at `/dev/buspirate`.
 The interface will thus be available there, which is way simpler than finding what device was associated to your bus pirate.
 
-For example if you have multiple usb devices plug into your computer, it would either pop as `/dev/ttyUSB0` or `/dev/ttyUSB1` or other possible names. With this rule, no more issues, it will always be at `/dev/buspirate`.
+(For example if you have multiple usb devices plug into your computer, it would either pop as `/dev/ttyUSB0` or `/dev/ttyUSB1` or other possible names. With this rule, no more issues, it will always be at `/dev/buspirate`).
 
 You must then reload your udev rules, which can be done with this command (need to be root):
 
@@ -210,7 +203,7 @@ When switched to a specific mode, you can now access the macro menu. In order to
 To execute a macro, you can use the `(x)` command, with `x` being the number corresponding to the macro you want.
 As I previously mentioned, there is a macro that is used to detect the speed of the device (4.Auto Baud Detection), which is useful if you did not know the operating speed.
 
-Once a macro is executed, either will you be able to stop it and return to UART mode, either you won't and will need to reset the BP.
+Once a macro is executed, depending on the one you chose, either will you be able to stop it and return to UART mode, either you won't and will need to reset the BP.
 
 But before we execute any macro, we must plug the BP to the target device.
 
@@ -235,8 +228,8 @@ We will thus need 3 cables from the BP cable: MISO, MOSI and GND, which we will 
 
 When that's done, you can use the macro from the latter step to start communicating from your computer to your target device.
 
-The UART interfaces are fun and all, you will sometimes find a tty, sometimes a custom prompt, maybe only a log activity… It has many applications.
-However if we want do delve more into what's running on our target, we might want to look at more interesting interfaces such as JTAG or SWD.
+UART interfaces are fun and all, you will sometimes find a tty, sometimes a custom prompt, maybe only a log activity… It has many applications which varies a lot between targets.
+However if we want do delve more into what's running on our target (dumping a firmware, reading memories…), we might want to look at more interesting interfaces such as JTAG or SWD (Unfortunately, the bus pirate doesn't support SWD interfaces)
 
 # JTAG with openOCD
 
@@ -261,7 +254,7 @@ Since it is generic, it can adapt itself to multiple processors and devices, but
 ### Installation
 
 OpenOCD is an open source software, so if you're running on a GNU/Linux system you'll mostly find it in your distribution's package list.
-If you're running on Windows, ~~no luck for you~~, you will find the package [here](http://gnutoolchains.com/arm-eabi/openocd/).
+If you're running on Windows ~~no luck for you~~, you will find the package [here](http://gnutoolchains.com/arm-eabi/openocd/).
 
 ### Configuration
 
@@ -313,7 +306,7 @@ If you can't find the file corresponding to your micro controller, well… You a
 
 ### Usage
 
-When you've found it there is not much left to do, launch a terminal, and run openOCD with your configuration files.
+When you have both config files there is not much left to do, launch a terminal, and run openOCD with your configuration files.
 Please note that openocd is a daemon, you will need another terminal to connect to it (or you can run it in the background).
 
 For example: 
@@ -337,8 +330,7 @@ That's all for today, see you folks!
 
 [bus_pirate]: /images/posts/bus_pirate/bus_pirate.jpg "Bus Pirate"
 [clipper_cable]: https://statics3.seeedstudio.com/images/probekit_LRG.jpg "Clipper Cable"
-[cable_without_clipper]: /images/posts/bus_pirate/cable_without_clippers.jpg "Cable without clippers"
-[clippers]: /images/posts/bus_pirate/clippers.jpg "Clippers"
 [cable_pinout]: http://dangerousprototypes.com/docs/images/1/1a/Seed-cable.png "Dangerous prototypes seeed cable"
 [uart_connector]: /images/posts/bus_pirate/uart_connector.jpg "UART Connector"
+
 
