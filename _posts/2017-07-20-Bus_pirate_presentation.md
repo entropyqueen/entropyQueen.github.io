@@ -212,10 +212,7 @@ But before we execute any macro, we must plug the BP to the target device.
 
 To do so, you will need to locate the UART connector on your target, some are hidden, some aren't, you might need a multimeter and a few datasheets to find them.
 
-Here's an example of what it can look like:
-![connector pin][uart_connector]
-
-So, basically, it can be anything, good luck finding them! :)
+It can be shaped as pins or pads, or basically anything, good luck finding them! :)
 
 The UART bus is made of just two wires: the receiver, RX, and the transmitter, TX. There should also be a PIN connected to GND, allowing the BP to know when the signal is down.
 
@@ -334,6 +331,4 @@ That's all for today, see you folks!
 [bus_pirate]: /images/posts/bus_pirate/bus_pirate.jpg "Bus Pirate"
 [clipper_cable]: https://statics3.seeedstudio.com/images/probekit_LRG.jpg "Clipper Cable"
 [cable_pinout]: http://dangerousprototypes.com/docs/images/1/1a/Seed-cable.png "Dangerous prototypes seeed cable"
-[uart_connector]: /images/posts/bus_pirate/uart_connector.jpg "UART Connector"
-
 
