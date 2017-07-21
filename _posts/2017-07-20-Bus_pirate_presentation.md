@@ -38,11 +38,11 @@ In order to properly work with this tool, you will need at least a USB cable wit
 
 I use this set of probes cables (which you can easily find online):
 ![Clipper cable][clipper_cable]
-*http://dangerousprototypes.com/docs/images/1/1a/Seed-cable.png*
+*(source: http://dangerousprototypes.com/docs/images/1/1a/Seed-cable.png)*
 
 Here is the pinout of the cable:
 ![cable pinout][cable_pinout]
-*https://statics3.seeedstudio.com/images/probekit_LRG.jpg*
+*(source: https://statics3.seeedstudio.com/images/probekit_LRG.jpg)*
 
 Anyway, that's pretty much it for the hardware part, let's start exploring what we can do with it!
 
