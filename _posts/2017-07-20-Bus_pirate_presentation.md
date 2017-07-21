@@ -17,7 +17,7 @@ for this first post, I wanted to make a *small* presentation of the bus pirate, 
 
 ![Bus Pirate][bus_pirate]
 
-The bus pirate is a small hardware board that permits an easy interfacing between your computer and some of the important protocols that we found in hardware communications, such as: 
+The bus pirate is a small hardware board that provides an easy interfacing between your computer and some of most common protocols that we found in hardware communications, such as: 
  * UART
  * JTAG
  * SPI
@@ -28,25 +28,27 @@ It is useful for debugging, reading memories, sniffing data, writing data…
 
 It has been developed by [Dangerous Prototypes](http://dangerousprototypes.com/), you can find many resources and documentation there.
 
-There is currently multiples versions of the bus pirate, I personally have the Bus Pirate v3.6 but the most recent one is the version 4. You can find the design improvement [here](http://dangerousprototypes.com/docs/Bus_Pirate_v4_design_overview), and a comparison between the two version [here](http://dangerousprototypes.com/docs/Bus_Pirate_v4_vs_v3_comparison).
+There are currently multiples versions of the bus pirate, I personally have the Bus Pirate v3.6 but the most recent one is the version 4. You can find the design improvement [here](http://dangerousprototypes.com/docs/Bus_Pirate_v4_design_overview), and a comparison between the two versions [here](http://dangerousprototypes.com/docs/Bus_Pirate_v4_vs_v3_comparison).
 
 The point that still bugs me with the v4 is that there is no support for JTAG over openOCD yet. Though it might come in a near future, I'd recommend ordering the version 3.6.
 
 ## Cables
 
-In order to properly work with this tool, you will need at least a USB cable with a USB mini B port and a set of cables/probes to attach to the device you want to test/speak with/attack.
+In order to properly work with this tool, you will need at least a USB cable with a USB mini B port and a set of cables/probes to attach to the device you want to test/comunicate with/attack.
 
 I use this set of probes cables (which you can easily find online):
 ![Clipper cable][clipper_cable]
+*http://dangerousprototypes.com/docs/images/1/1a/Seed-cable.png*
 
 Here is the pinout of the cable:
 ![cable pinout][cable_pinout]
+*https://statics3.seeedstudio.com/images/probekit_LRG.jpg*
 
 Anyway, that's pretty much it for the hardware part, let's start exploring what we can do with it!
 
 # Basic setup
 
-First of all, we will require a few software setup to access the Bus Pirate's serial interface.
+First of all, we will require a bit of software setup to access the serial interface of the Bus Pirate.
 
 ## Optional udev rule
 
@@ -88,7 +90,7 @@ Speed: 115200
 ```
 
 You then have the possibility to save your configuration by writing a name in the box below `Saved Sessions` and then hitting the `Save` button.
-Then, just double click the name you've put and a new terminal will open. (if you don't see any prompt, try pressing enter, if that doesn't work you may have a firmware issue)
+Then, just double click the name you've chosen and a new terminal will open. (if you don't see any prompt, try pressing enter, if that doesn't work you may have a firmware issue)
 
 The help command is the character `?`:
 ```
@@ -125,7 +127,7 @@ DEVID:0x0447 REVID:0x3046 (24FJ64GA002 B8)
 http://dangerousprototypes.com
 ```
 
-I haven't delve much in the different commands yet, but let's move on to something a bit more interesting: communicating with the device you are trying to audit/hack.
+I haven't delved much in the different commands yet, but let's move on to something a bit more interesting: communicating with the device you are trying to audit/hack.
 
 # Usage for UART
 
@@ -162,10 +164,10 @@ Set serial port speed: (bps)
 10. BRG raw value
 ```
 
-You must now select the speed of the communication between the target and the bus pirate. Either you already know this value, either you will have to guess it. Or you will be able to let the BP determine it automatically later.
+You must now select the communication speed between the target and the bus pirate. Either you already know this value, either you will have to guess it. Or you will be able to let the BP determine it automatically later.
 So, if you know the speed just select the right one otherwise, choose at random!
 
-You will then have to choose the settings for the connection. Usually, default settings works fine, but there is some times where you will encounter a custom target which will force you to adapt.
+You will then have to choose the settings for the connection. Usually, default settings work fine, but there are times when you will encounter a custom target which will force you to adapt.
 
 ```
 Data bits and parity:
@@ -192,7 +194,7 @@ Ready
 
 Once everything is configured the BP will switch to UART mode. You can reset it to default by unpluging it or connecting the pins 3.3v to the GND on the side of the board (you can do this by swiping a piece of metal between the pins).
 
-When switched to a specific mode, you can now access the macro menu. In order to list the different available macro you must use the `(0)` command.
+With the BP switched to a specific mode, you can now access the macro menu. In order to list the different available macro you must use the `(0)` command.
 ```
  0.Macro menu
  1.Transparent bridge
@@ -204,9 +206,9 @@ When switched to a specific mode, you can now access the macro menu. In order to
 To execute a macro, you can use the `(x)` command, with `x` being the number corresponding to the macro you want.
 As I previously mentioned, there is a macro that is used to detect the speed of the device (4.Auto Baud Detection), which is useful if you did not know the operating speed.
 
-Once a macro is executed, depending on the one you chose, either will you be able to stop it and return to UART mode, either you won't and will need to reset the BP.
+Once a macro is executed, depending on the one you chose, either will you be able to stop it and return to UART mode, or you won't and will need to reset the BP.
 
-But before we execute any macro, we must plug the BP to the target device.
+But before we execute any macro, we must plug the BP into the target device.
 
 ## cable configuration
 
@@ -226,12 +228,12 @@ We will thus need 3 cables from the BP cable: MISO, MOSI and GND, which we will 
 
 When that's done, you can use the macro from the latter step to start communicating from your computer to your target device.
 
-UART interfaces are fun and all, you will sometimes find a tty, sometimes a custom prompt, maybe only a log activity… It has many applications which varies a lot between targets.
-However if we want do delve more into what's running on our target (dumping a firmware, reading memories…), we might want to look at more interesting interfaces such as JTAG or SWD (Unfortunately, the bus pirate doesn't support SWD interfaces)
+UART interfaces are fun and all, you will sometimes find a tty, sometimes a custom prompt, maybe only a log activity… It has many applications which vary a lot between targets.
+However if we want do delve more into what's running on our target (dumping a firmware, reading memories…), we might want to look at more interesting interfaces such as JTAG or SWD (unfortunately, the bus pirate doesn't support SWD interfaces).
 
 # JTAG with openOCD
 
-The JTAG interface is designed for debugging electronic systems, it can also be used for accessing registers or memory on a micro controller. 
+The JTAG interface is designed for debugging electronic systems, it can also be used to access registers or memory on a micro controller. 
 
 ## JTAG pinout
 
@@ -251,7 +253,7 @@ Since it is generic, it can adapt itself to multiple processors and devices, but
 
 ### Installation
 
-OpenOCD is an open source software, so if you're running on a GNU/Linux system you'll mostly find it in your distribution's package list.
+OpenOCD is an open source software, so if you're running on a GNU/Linux system you'll most likely find it in your distribution's package list.
 If you're running on Windows ~~no luck for you~~, you will find the package [here](http://gnutoolchains.com/arm-eabi/openocd/).
 
 ### Configuration
@@ -300,7 +302,7 @@ The configuration files are either located in:
 or
 `/usr/share/openocd/scripts/target/`
 
-If you can't find the file corresponding to your micro controller, well… You are out of luck and will need to provide it yourself. (Get a datasheet, get the documentation for OpenOCD, create your file and share it to the community!)
+If you can't find the file corresponding to your micro controller, well… You are out of luck and will need to provide it yourself. (Get a datasheet, get the documentation for OpenOCD, create your file and share it with the community!)
 
 ### Usage
 
@@ -320,15 +322,15 @@ From now, you can use the command `help` to list the different commands. It will
 
 # Conclusion and alternatives
 
-In conclusion, I'd say that it is a nice tool to have to mess around IoT devices, it is easy of use, pretty cheap, and leaves room for improvement since it is open source.
+In conclusion, I'd say that it is a nice tool to have to mess around with IoT devices, it is easy to use, pretty cheap, and leaves room for improvement since it is open source.
 
-However, it is slow, and I had some issues sniffing communications in I²C between a NOR memory and its micro-controller because the operating frequency of the IoT device was much higher than what the bus pirate can handle. A faster alternative called [HardSploit](https://hardsploit.io/) is being developed by the French company Serma safety and security. I had the opportunity to try it during a formation, and I might make a post about it someday in the future. Currently, HardSploit have an open source community version, which costs around 300€. It's not as cheap as the bus pirate, but it is more user friendly.
+However, it is slow, and I had some issues sniffing communications in I²C between a NOR memory and its micro-controller because the operating frequency of the IoT device was much higher than what the bus pirate can handle. A faster alternative called [HardSploit](https://hardsploit.io/) is being developed by the French company Serma safety and security. I had the opportunity to try it out during a formation, and I might make a post about it someday in the future. Currently, HardSploit have an open source community version, which costs around 300€. It's not as cheap as the bus pirate, but it is more user friendly.
 
-Another alternative I came across on the web is the [HydraBus](https://hydrabus.com/), which seems to be pretty interesting given all the protocols it theoretically handle, the use of a Cortex M4 micro-controller and all this for only $69. Unfortunately, I couldn't test it yet.
+Another alternative I came across on the web is the [HydraBus](https://hydrabus.com/), which seems to be pretty interesting given all the protocols it can theoretically handle, the use of a Cortex M4 micro-controller and its measly price of $69. Unfortunately, I couldn't test it yet.
 
 That's all for today, see you folks!
 
 [bus_pirate]: /images/posts/bus_pirate/bus_pirate.jpg "Bus Pirate"
-[clipper_cable]: https://statics3.seeedstudio.com/images/probekit_LRG.jpg "Clipper Cable"
-[cable_pinout]: http://dangerousprototypes.com/docs/images/1/1a/Seed-cable.png "Dangerous prototypes seeed cable"
+[clipper_cable]: /images/posts/bus_pirate/probekit_LRG.jpg "Clipper Cable"
+[cable_pinout]: /images/posts/bus_pirate/Seed-cable.png "Dangerous prototypes seeed cable"
 
