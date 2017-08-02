@@ -244,6 +244,7 @@ The JTAG interface is designed for debugging electronic systems, it can also be 
 | MISO          | TDI         |
 | MOSI          | TDO         |
 | CS            | TMS         |
+| CLK           | TCK         |
 | GND           | GND         |
 
 ## OpenOCD installation and configuration
