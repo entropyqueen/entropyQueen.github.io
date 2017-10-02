@@ -331,7 +331,7 @@ source [find target/stm32f4x.cfg]
 
 Unfortunately, I did not have a real target to make a real example at the time of writing, so I just set the target to a STM32F4 micro-controller, just for the example.
 
-If you are wondering what those options and parameter does, I suggest you to read openOCD's documentation about configuration files, which you can find [here][http://openocd.org/doc-release/html/Config-File-Guidelines.html#Interface-Config-Files]
+If you are wondering what those options and parameter does, I suggest you to read openOCD's documentation about configuration files, which you can find [here](http://openocd.org/doc-release/html/Config-File-Guidelines.html#Interface-Config-Files)
 
 
 As always, for the pinout, we can use the command `show pins` while in `jtag` mode:
