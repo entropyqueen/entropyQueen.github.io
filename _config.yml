@@ -9,7 +9,7 @@ description: >
 # Your information
 email: quentrg@gmail.com
 author: ark
-avatar: "//www.gravatar.com/avatar/af9c07b77fee746d0e34622857671a03?d=mm&s=135"
+avatar: "/images/psyduck.png"
 profile: 
 twitter_username: Ark_444
 github_username: Ark444
@@ -19,13 +19,13 @@ github_username: Ark444
 disqus_shortname: "ark444-github-io" # get one: https://disqus.com/admin/signup/
 #duoshuo_shortname: xxx  # get one: http://duoshuo.com/create-site/
 
-permalink: /archivers/:title
+permalink: /posts/:title
 gems:
  - jekyll-paginate
  - jekyll-gist
  - jemoji
 
-banner: "/images/banner.bmp"
+banner: "/images/banner.png"
 
 # Build settings
 paginate: 5
