@@ -7,10 +7,10 @@ tags: []
 image:
   feature:
 date: 2017-08-04 16:49:25 +0200
-modified: 2017-08-04 16:49:25 +0200
+modified: 2017-10-02 16:49:25 +0200
 ---
 
-So last time, I wrote a [post about the bus pirate](https://ark444.github.io/posts/Bus_pirate_presentation), which had its small success. It attracted a few people and eventually, [@hydrabus][1] found it and this happened:
+So last time, I wrote a [post about the bus pirate](https://ark444.github.io/posts/Bus_pirate_presentation), which had its small success. It attracted a few people and eventually, [@hydrabus][1] found it, and this happened:
 
 ![twitter screenshot][2]
 
@@ -24,13 +24,14 @@ Needless to say that I accepted, and here we are. Thanks a lot to [@hydrabus][1]
 
 ![HydraBus][4]
 
-To have an idea of the size of the pcb, it is a standard [DangerousPrototypes][3] PCB, which leads to the HydraBus being the same size as the BusPirate:
+To have an idea of the pcb's size, it is a standard [DangerousPrototypes][3] PCB, which leads to the HydraBus being the same size as the BusPirate:
 
 ![Hydrabus and buspirate][5]
 
 Here is a list of what the HydraBus can do so far:
 
  * Communicate with multiple protocols: UART, SPI, I²C, JTAG, SWD, CAN…
+ * I²C sniffing with sigrok/pulseview in logic analyzer mode
  * Python scripting using the binary interface (we will probably talk about this in a future post)
  * Save data to micro SD card
  * USB OTG port
@@ -41,6 +42,7 @@ Also, it basically is no different from a micro-controller (STM32F415) connected
 ### Documentation
 
 There is already plenty of documentation available on [github][6] and on the [hydrabus project page][7].
+Also, and IRC channel is available: `#hydrabus` on [freenode](http://freenode.net/)
 
 [3]: http://dangerousprototypes.com/
 [4]: /images/posts/hydrabus/hydrabus.jpg
@@ -370,7 +372,6 @@ Everything is now set we can finally interact with our micro controller. Typing 
 
 The HydraBus is a promising tool, with a lots of possibilities given the implemented protocols. It is faster than the buspirate, but does not always catch up with frequencies used by memories or micro controllers to communicate with some protocols, which in some case is problematic for communication sniffing (with SPI or I²C for example).
 Since it is still in development we can hope for more and more good contribution on the project which is really great! However, due to the fact that it is quite young and not yet well renowned, it lacks a bit of a big community around it, but we can hope for it to grow quickly. So I would gladly encourage all of you to take a look to the project and contribute if you can!
-
 
 
 And once more, huge thank to [@hydrabus][1] for this awesome tool!
