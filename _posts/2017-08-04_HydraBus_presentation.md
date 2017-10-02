@@ -303,18 +303,18 @@ You can quit the bridge mode by pressing the button named `UBTN` on the device a
 
 [11]: /images/posts/hydrabus/hydrabus_rpi.jpg
 
-## JTAG mode using openOCD
+# JTAG mode using openOCD
 
 The great thing about the hydrabus is that it implements the same binary mode than the bus pirate, which lead to some tools to have a _natural_ compatibility with it.
 The JTAG interface is designed for debugging electronic systems, it can also be used for accessing registers or memory on a micro controller. 
 
-### OpenOCD installation and configuration
+## OpenOCD installation and configuration
 
 I've already explained all this in [my blog post about the bus pirate][12] so I'll be quick with this.
 
 If you are using a GNU/Linux system, you can install openOCD from your official package repository, otherwise, you can find it [here](http://gnutoolchains.com/arm-eabi/openocd/).
 
-### Configuration and usage
+## Configuration and usage
 
 The configuration file for the HydraBus is similar to the one for the bus pirate, with a few changes for the `buspirate_port` parameter.
 
