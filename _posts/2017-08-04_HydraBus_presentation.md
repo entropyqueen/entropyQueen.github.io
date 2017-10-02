@@ -368,6 +368,9 @@ Everything is now set we can finally interact with our micro controller. Typing 
 
 # Conclusions
 
+The HydraBus is a promising tool, with a lots of possibilities given the implemented protocols. It is faster than the buspirate, but does not always catch up with frequencies used by memories or micro controllers to communicate with some protocols, which in some case is problematic for communication sniffing (with SPI or I²C for example).
+Since it is still in development we can hope for more and more good contribution on the project which is really great! However, due to the fact that it is quite young and not yet well renowned, it lacks a bit of a big community around it, but we can hope for it to grow quickly. So I would gladly encourage all of you to take a look to the project and contribute if you can!
+
 
 
 And once more, huge thank to [@hydrabus][1] for this awesome tool!
