@@ -352,18 +352,22 @@ TRST: PB7
 
 Once every cable are plugged properly, we can start openOCD, using the following command:
 
-`openocd -f hydrabus.cfg`
+```
+openocd -f hydrabus.cfg
+```
 
 and in another terminal connect to it using telnet (though I rather use netcat) on `localhost` and port `4444`:
 
-`nc localhost 4444`
+```
+nc localhost 4444
+```
 
-Everything is now set we can finally interact with our micro controller. Typing the `help` command in the interface will display all the available commands, so you can now have fun and ![meme][/images/posts/hydrabus/meme.jpg]
+Everything is now set we can finally interact with our micro controller. Typing the `help` command in the interface will display all the available commands, so you can now have fun and ![meme](/images/posts/hydrabus/meme.jpg)
 
 [12]: https://ark444.github.io/posts/Bus_pirate_presentation
 
 # Conclusions
 
-Thanks
-Great tool
 
+
+And once more, huge thank to [@hydrabus][1] for this awesome tool!
