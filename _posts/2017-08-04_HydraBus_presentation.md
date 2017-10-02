@@ -70,6 +70,8 @@ Create the file `/etc/udev/rules.d/98-hydrabus.rules`, containing the following:
 ```bash
 SUBSYSTEM=="tty", ATTRS{idVendor}=="1d50", ATTRS{idProduct}=="60a7", GROUP="users", MODE="0666", SYMLINK+="hydrabus"
 ```
+Note that you can get the idVendor and idProduct from the command `lsusb`.
+
 
 And reload the udev rules (as root):
 
@@ -104,9 +106,11 @@ There exist other way to connect to the serial interface, using other tools, lik
 
 # First contact: discovery
 
+Once you've connected to the hydrabus using your favorite tool, you now have access to its serial interface, let's explore it a bit together.
+
 ## Help and system information
 
-The `help` command is quite straightforward:
+One of the greatest command you will find here is the `help` command. It is quite straightforward to use, as shown here:
 
 ```
 > help
@@ -138,7 +142,10 @@ Available commands
 >
 ```
 
-Let's show some information about the board:
+Note that you can also request more help for a specific command by typing `help <command_name>`.
+
+
+We can now show some information about the board:
 
 ```
 > help show
@@ -189,10 +196,13 @@ Failed to connect to SD card.
 >
 > show debug
 Debugging is disabled.
-
 ```
 
 ## Getting into UART mode
+
+Now that you have a better idea about how the serial interface behaves, we will use it for some more interesting purpose.
+Here, I have a raspberry pi which provides a UART communication mode through its GPIO pins. We will use the hydrabus as an interface to communicate with it and log into the raspberry's system.
+
 
 To start uart mode, just type `uart`
 
@@ -242,9 +252,9 @@ Stop bits: 1
 uart1>
 ```
 
-These parameter seems cool enough, let's access our RPI using UART connexion:
+These parameter seems good enough to access our RPI using UART connexion.
 
-In order to know where to plug our cables, there is a neat option for that:
+Well, how do we connect the cables? There is a neat option for that:
 
 ```
 uart1> show pins
@@ -252,10 +262,17 @@ TX: PA9
 RX: PA10
 ```
 
-Connect those pins and the GND pin to the RPI board.
-Keep in mind that you will need to inverse the pins (RX on the hydrabus goes to TX on the RPI and TX on the hydrabus goes to RX on the RPI)
+Believe me, this command will be helpful more than once! Connect those pins and the GND pin to the RPI board. Keep in mind that you will need to inverse the pins (RX on the hydrabus goes to TX on the RPI and TX on the hydrabus goes to RX on the RPI) because that is how UART behaves.
+
+| HydraBus    | RPI       |
+| ----------- |-----------|
+| TX          | RX        |
+| RX          | TX        |
+| GND         | GND       |
 
 ![hydrabus_rpi][11]
+
+Now that everything is properly setup, we should be able to go into bridge mode on the HydraBus. The purpose of this mode is to make the hydrabus behave like a UART cable.
 
 ```
 uart1> bridge
@@ -284,11 +301,66 @@ pi@raspberrypi:~$
 ```
 
 Great we can use the Hydrabus as a UART interface to other devices!
-Let's now dive a bit more into the details and possibilities with an example on how to use it as a JTAG/SWD interface 
-
-Quit the bridge mode by pressing the button named `UBTN` on the device and then type `exit` to return to normal mode.
+You can quit the bridge mode by pressing the button named `UBTN` on the device and then type `exit` to return to normal mode.
 
 [11]: /images/posts/hydrabus/hydrabus_rpi.jpg
+
+## JTAG mode using openOCD
+
+The great thing about the hydrabus is that it implements the same binary mode than the bus pirate, which lead to some tools to have a _natural_ compatibility with it.
+The JTAG interface is designed for debugging electronic systems, it can also be used for accessing registers or memory on a micro controller. 
+
+### OpenOCD installation and configuration
+
+I've already explained all this in [my blog post about the bus pirate][12] so I'll be quick with this.
+
+If you are using a GNU/Linux system, you can install openOCD from your official package repository, otherwise, you can find it [here](http://gnutoolchains.com/arm-eabi/openocd/).
+
+### Configuration and usage
+
+The configuration file for the HydraBus is similar to the one for the bus pirate, with a few changes for the `buspirate_port` parameter.
+
+```
+source [find interface/buspirate.cfg]
+
+buspirate_port /dev/hydrabus
+buspirate_vreg 1
+buspirate_mode normal
+transport select jtag
+
+source [find target/stm32f4x.cfg]
+```
+
+for the example, we are using a STM32F4 micro-controller target.
+
+
+As always, for the pinout, we can use the command `show pins` while in `jtag` mode:
+
+```
+> jtag
+Device: JTAG1
+GPIO resistor: floating
+Frequency: 1000000Hz
+Bit order: LSB first
+jtag1> show pins
+TMS: PB10
+TCK: PB11
+TDI: PB8
+TDO: PB9
+TRST: PB7
+```
+
+Once every cable are plugged properly, we can start openOCD, using the following command:
+
+`openocd -f hydrabus.cfg`
+
+and in another terminal connect to it using telnet (though I rather use netcat) on `localhost` and port `4444`:
+
+`nc localhost 4444`
+
+Everything is now set we can finally interact with our micro controller. Typing the `help` command in the interface will display all the available commands, so you can now have fun and ![meme][/images/posts/hydrabus/meme.jpg]
+
+[12]: https://ark444.github.io/posts/Bus_pirate_presentation
 
 # Conclusions
 
