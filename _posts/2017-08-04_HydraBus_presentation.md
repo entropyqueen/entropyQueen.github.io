@@ -237,7 +237,7 @@ Interaction: <read/write (value:repeat)>
 uart1> speed 115200
 ```
 
-As shown in the help message, we could have configured everything in one command. But the good thing is that we can still change the parameters before doing anything.
+As shown in the help message, we could have configured everything in one command. But the good thing is that we can still change the parameters before doing anything else.
 
 ```
 uart1> speed 115200
