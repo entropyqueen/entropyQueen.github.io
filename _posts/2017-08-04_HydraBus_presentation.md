@@ -31,8 +31,8 @@ To have an idea of the pcb's size, it is a standard [DangerousPrototypes][3] PCB
 Here is a list of what the HydraBus can do so far:
 
  * Communicate with multiple protocols: UART, SPI, I²C, JTAG, SWD, CAN…
- * I²C sniffing with sigrok/pulseview in logic analyzer mode
- * Python scripting using the binary interface (we will probably talk about this in a future post)
+ * I²C sniffing with sigrok/pulseview in logic analyzer mode (which I want to talk about in a future post!)
+ * Python scripting using the binary interface (we will probably talk about this in another post too)
  * Save data to micro SD card
  * USB OTG port
  * more…?
