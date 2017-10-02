@@ -31,18 +31,16 @@ To have an idea of the size of the pcb, it is a standard [DangerousPrototypes][3
 Here is a list of what the HydraBus can do so far:
 
  * Communicate with multiple protocols: UART, SPI, I²C, JTAG, SWD, CAN…
- * Python scripting
+ * Python scripting using the binary interface (we will probably talk about this in a future post)
  * Save data to micro SD card
  * USB OTG port
+ * more…?
 
 Also, it basically is no different from a micro-controller (STM32F415) connected to some pins, so have fun hacking it ;)
 
 ### Documentation
 
 There is already plenty of documentation available on [github][6] and on the [hydrabus project page][7].
-
-Hydrabus.com
-Github repositories & wiki
 
 [3]: http://dangerousprototypes.com/
 [4]: /images/posts/hydrabus/hydrabus.jpg
