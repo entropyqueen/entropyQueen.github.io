@@ -364,7 +364,9 @@ and connect to it using telnet (though I rather use netcat) on `localhost` and p
 nc localhost 4444
 ```
 
-Everything is now set and we can finally interact with our micro controller. Typing the `help` command in the interface will display all the available commands, so you can now have fun and ![meme](/images/posts/hydrabus/meme.jpg)
+Everything is now set and we can finally interact with our micro controller. Typing the `help` command in the interface will display all the available commands, so you can now have fun and
+
+![meme](/images/posts/hydrabus/meme.jpg)
 
 [12]: https://ark444.github.io/posts/Bus_pirate_presentation
 
