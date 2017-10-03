@@ -10,7 +10,7 @@ date: 2017-08-04 16:49:25 +0200
 modified: 2017-10-02 16:49:25 +0200
 ---
 
-So last time, I wrote a [post about the bus pirate](https://ark444.github.io/posts/Bus_pirate_presentation), which had its small success. It attracted a few people and eventually, [@hydrabus][1] found it, and this happened:
+So last time, I wrote a [post about the bus pirate](https://ark444.github.io/posts/Bus_pirate_presentation), which was quite successful. It attracted a few people and eventually, [@hydrabus][1] found it, and this happened:
 
 ![twitter screenshot][2]
 
@@ -24,15 +24,15 @@ Needless to say that I accepted, and here we are. Thanks a lot to [@hydrabus][1]
 
 ![HydraBus][4]
 
-To have an idea of the pcb's size, it is a standard [DangerousPrototypes][3] PCB, which leads to the HydraBus being the same size as the BusPirate:
+To get an idea of the size of the PCB, it is a standard [DangerousPrototypes][3] PCB, which leads to the HydraBus being the same size as the BusPirate:
 
 ![Hydrabus and buspirate][5]
 
 Here is a list of what the HydraBus can do so far:
 
  * Communicate with multiple protocols: UART, SPI, I²C, JTAG, SWD, CAN…
- * I²C sniffing with sigrok/pulseview in logic analyzer mode (which I want to talk about in a future post!)
- * Python scripting using the binary interface (we will probably talk about this in another post too)
+ * I²C sniffing with sigrok/pulseview in logic analyzer mode (which I want to write about in a future post!)
+ * Python scripting using the binary interface (we will probably discuss this in another post too)
  * Save data to micro SD card
  * USB OTG port
  * more…?
@@ -42,7 +42,7 @@ Also, it basically is no different from a micro-controller (STM32F415) connected
 ### Documentation
 
 There is already plenty of documentation available on [github][6] and on the [hydrabus project page][7].
-Also, and IRC channel is available: `#hydrabus` on [freenode](http://freenode.net/)
+Also, an IRC channel is available: `#hydrabus` on [freenode](http://freenode.net/)
 
 [3]: http://dangerousprototypes.com/
 [4]: /images/posts/hydrabus/hydrabus.jpg
@@ -52,11 +52,11 @@ Also, and IRC channel is available: `#hydrabus` on [freenode](http://freenode.ne
 
 ## Cables
 
-Unlike the bus pirate, there is no standard cables for the HydraBus yet, so I just used a bunch of wire jumpers with some grabbers.
+Unlike the bus pirate, there are no standard cables for the HydraBus yet, so I simply used a bunch of wire jumpers with some grabbers.
 
 ![wire jumper and grabber][8]
 
-For the USB cable, we need a micro USB type B.
+For the USB cable, we need a micro USB type B connector.
 
 [8]: /images/posts/hydrabus/wire_jumper.jpg
 
@@ -64,7 +64,7 @@ For the USB cable, we need a micro USB type B.
 
 ## Optional udev rule
 
-For the same reason than with the bus pirate, I like to setup an udev rule for the Hydrabus, allowing for easier usage. Here is my rule: 
+For the same reason as with the bus pirate, I like to setup an udev rule for the Hydrabus, making usage easier. Here is my rule: 
 
 Create the file `/etc/udev/rules.d/98-hydrabus.rules`, containing the following:
 ```bash
@@ -79,7 +79,7 @@ And reload the udev rules (as root):
 udevadm control --reload-rules
 ```
 
-Basically, if you haven't read my post on buspirate, this rule matches the idVendor and idProduct of the Hydrabus and creates a symlink at `/dev/hydrabus`, which will become handy later on.
+Basically, if you haven't read my post on the BusPirate, this rule matches the idVendor and idProduct of the Hydrabus and creates a symlink at `/dev/hydrabus`, which will come in handy later on.
 
 ## Communicating with your HydraBus
 
@@ -89,7 +89,7 @@ One easy way to connect to your hydrabus is to use the command screen:
 screen /dev/hydrabus 115200
 ```
 
-For my own personal use, I chose to add an alias to this command, in my .bashrc file:
+For my personal use, I chose to add an alias to this command, in my .bashrc file:
 
 ```
 alias hydrabus='screen /dev/hydrabus 115200'
@@ -106,11 +106,11 @@ There exist other way to connect to the serial interface, using other tools, lik
 
 # First contact: discovery
 
-Once you've connected to the hydrabus using your favorite tool, you now have access to its serial interface, let's explore it a bit together.
+Once you've connected to the hydrabus using your favorite tool, you get access to its serial interface; let's explore it a bit together.
 
 ## Help and system information
 
-One of the greatest command you will find here is the `help` command. It is quite straightforward to use, as shown here:
+One of the greatest commands you will find here is the `help` command. It is quite straightforward to use, as shown here:
 
 ```
 > help
@@ -200,7 +200,7 @@ Debugging is disabled.
 
 ## Getting into UART mode
 
-Now that you have a better idea about how the serial interface behaves, we will use it for some more interesting purpose.
+Now that you have a better idea about how the serial interface behaves, we will use it for some more interesting purposes.
 Here, I have a raspberry pi which provides a UART communication mode through its GPIO pins. We will use the hydrabus as an interface to communicate with it and log into the raspberry's system.
 
 
@@ -252,9 +252,9 @@ Stop bits: 1
 uart1>
 ```
 
-These parameter seems good enough to access our RPI using UART connexion.
+These parameters seem good enough to access our RPI using UART connexion.
 
-Well, how do we connect the cables? There is a neat option for that:
+Well, how do we connect the cables? There is a neat command for that:
 
 ```
 uart1> show pins
@@ -262,7 +262,7 @@ TX: PA9
 RX: PA10
 ```
 
-Believe me, this command will be helpful more than once! Connect those pins and the GND pin to the RPI board. Keep in mind that you will need to inverse the pins (RX on the hydrabus goes to TX on the RPI and TX on the hydrabus goes to RX on the RPI) because that is how UART behaves.
+Believe me, this command will be helpful more than once! Connect those pins and the GND pin to the RPI board. Keep in mind that you will need to invert the pins (RX on the hydrabus goes to TX on the RPI and TX on the hydrabus goes to RX on the RPI) because that is how UART behaves.
 
 | HydraBus    | RPI       |
 | ----------- |-----------|
@@ -272,7 +272,7 @@ Believe me, this command will be helpful more than once! Connect those pins and 
 
 ![hydrabus_rpi][11]
 
-Now that everything is properly setup, we should be able to go into bridge mode on the HydraBus. The purpose of this mode is to make the hydrabus behave like a UART cable.
+Now that everything is properly set up, we should be able to go into bridge mode on the HydraBus. The purpose of this mode is to make the hydrabus behave like a UART cable.
 
 ```
 uart1> bridge
@@ -307,8 +307,8 @@ You can quit the bridge mode by pressing the button named `UBTN` on the device a
 
 # JTAG mode using openOCD
 
-The great thing about the hydrabus is that it implements the same binary mode than the bus pirate, which lead to some tools to have a _natural_ compatibility with it.
-The JTAG interface is designed for debugging electronic systems, it can also be used for accessing registers or memory on a micro controller. 
+The great thing about the hydrabus is that it implements the same binary mode as the bus pirate, which leads to some tools being _naturally_ compatible with it.
+The JTAG interface is designed for debugging electronic systems; it can also be used for accessing registers or memory on a micro controller. 
 
 ## OpenOCD installation and configuration
 
@@ -331,9 +331,9 @@ transport select jtag
 source [find target/stm32f4x.cfg]
 ```
 
-Unfortunately, I did not have a real target to make a real example at the time of writing, so I just set the target to a STM32F4 micro-controller, just for the example.
+Unfortunately, I did not have a real target at the time of writing, so I just set the target to a STM32F4 micro-controller, for the sake of the example.
 
-If you are wondering what those options and parameter does, I suggest you to read openOCD's documentation about configuration files, which you can find [here](http://openocd.org/doc-release/html/Config-File-Guidelines.html#Interface-Config-Files).
+If you are wondering what those options and parameters do, I suggest you read openOCD's documentation about configuration files, which you can find [here](http://openocd.org/doc-release/html/Config-File-Guidelines.html#Interface-Config-Files).
 
 
 As always, for the pinout, we can use the command `show pins` while in `jtag` mode:
@@ -352,26 +352,26 @@ TDO: PB9
 TRST: PB7
 ```
 
-Once every cable are plugged properly, we can start openOCD, using the following command:
+Once all the cables are plugged properly, we can start openOCD, using the following command:
 
 ```
 openocd -f hydrabus.cfg
 ```
 
-and in another terminal connect to it using telnet (though I rather use netcat) on `localhost` and port `4444`:
+and connect to it using telnet (though I rather use netcat) on `localhost` and port `4444` in another terminal:
 
 ```
 nc localhost 4444
 ```
 
-Everything is now set we can finally interact with our micro controller. Typing the `help` command in the interface will display all the available commands, so you can now have fun and ![meme](/images/posts/hydrabus/meme.jpg)
+Everything is now set and we can finally interact with our micro controller. Typing the `help` command in the interface will display all the available commands, so you can now have fun and ![meme](/images/posts/hydrabus/meme.jpg)
 
 [12]: https://ark444.github.io/posts/Bus_pirate_presentation
 
 # Conclusions
 
-The HydraBus is a promising tool, with a lots of possibilities given the implemented protocols. It is faster than the buspirate, but does not always catch up with frequencies used by memories or micro controllers to communicate with some protocols, which in some case is problematic for communication sniffing (with SPI or I²C for example).
-Since it is still in development we can hope for more and more good contribution on the project which is really great! However, due to the fact that it is quite young and not yet well renowned, it lacks a bit of a big community around it, but we can hope for it to grow quickly. So I would gladly encourage all of you to take a look to the project and contribute if you can!
+The HydraBus is a promising tool, with lots of possibilities given the implemented protocols. It is faster than the buspirate, but does not always catch up with frequencies used by memories or micro controllers to communicate with some protocols, which in some cases is problematic for communication sniffing (with SPI or I²C for example).
+Since it is still in development we can hopefully count on a rising number of good contributions to the project which is really great! However, due to the fact that it is quite young and not yet well renowned, the community around the project is quite small as of yet, but we can hope for it to grow quickly. So I would gladly encourage all of you to take a look at the project and contribute if you have the chance!
 
 
-And once more, huge thank to [@hydrabus][1] for this awesome tool!
+And once more, a special shout-out to [@hydrabus][1] for this awesome tool!
