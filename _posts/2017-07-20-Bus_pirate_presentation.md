@@ -6,6 +6,7 @@ excerpt:
 tags: []
 image:
   feature:
+permalink: /archivers/:title
 date: 2017-07-20 10:49:25 +0200
 modified: 2017-07-20 10:49:25 +0200
 ---
