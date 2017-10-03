@@ -6,8 +6,8 @@ excerpt:
 tags: []
 image:
   feature:
-date: 2017-08-04 16:49:25 +0200
-modified: 2017-10-02 09:00:25 +0200
+date: 2017-10-03 00:09:25 +0200
+modified: 2017-10-03 09:00:25 +0200
 ---
 
 So last time, I wrote a [post about the bus pirate](https://ark444.github.io/posts/Bus_pirate_presentation), which was quite successful. It attracted a few people and eventually, [@hydrabus][1] found it, and this happened:
