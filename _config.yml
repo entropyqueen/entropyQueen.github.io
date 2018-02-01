@@ -19,7 +19,7 @@ github_username: Ark444
 disqus_shortname: "ark444-github-io" # get one: https://disqus.com/admin/signup/
 #duoshuo_shortname: xxx  # get one: http://duoshuo.com/create-site/
 
-permalink: /archivers/:title
+permalink: /posts/:title
 gems:
  - jekyll-paginate
  - jekyll-gist
