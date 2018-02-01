@@ -10,7 +10,7 @@ date: 2017-10-03 00:09:25 +0200
 modified: 2017-10-03 09:00:25 +0200
 ---
 
-So last time, I wrote a [post about the bus pirate](https://ark444.github.io/posts/Bus_pirate_presentation), which was quite successful. It attracted a few people and eventually, [@hydrabus][1] found it, and this happened:
+So last time, I wrote a [post about the bus pirate](https://ark444.github.io/archivers/Bus_pirate_presentation), which was quite successful. It attracted a few people and eventually, [@hydrabus][1] found it, and this happened:
 
 ![twitter screenshot][2]
 
@@ -368,7 +368,7 @@ Everything is now set and we can finally interact with our micro controller. Typ
 
 ![meme](/images/posts/hydrabus/meme.jpg)
 
-[12]: https://ark444.github.io/posts/Bus_pirate_presentation
+[12]: https://ark444.github.io/archivers/Bus_pirate_presentation
 
 # Conclusions
 
