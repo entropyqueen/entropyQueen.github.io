@@ -249,7 +249,7 @@ Let's take a look at `sym.check_passphrase`:
 
 From the main we can see it is called using our input and the size of bytes read. More interestingly, there is a call to `memcpy` using these values. However, the stack is allocated by 0x50, which is smaller than the 0xc8 maximum read size allowed in the main.
 
-We thus have a buffer overflow on the check_passphrase function!
+**We thus have a buffer overflow on the check_passphrase function!**
 
 One final interesting thing to look at is the `sym.admin_shell` function to see how we can get a shell from it. Unfortunately, it happens that this function is a fake and prints a message stating it is disabled.
 
@@ -413,7 +413,7 @@ $1 = {<text variable, no debug info>} 0x695e0 <fclose>
 
 ### Getting one_gadget offset
 
-One_gadget is *the* one gadget you can find in the libc that performs the simple and wonderful task of `execve("/bin/sh", rsp+0x30, environ)`
+One_gadget is **the** one gadget you can find in the libc that performs the simple and wonderful task of `execve("/bin/sh", rsp+0x30, environ)`
 
 There is a useful tool on github that allows to search for it easily: https://github.com/david942j/one_gadget
 
