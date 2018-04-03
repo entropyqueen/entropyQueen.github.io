@@ -357,9 +357,9 @@ The main function is perfect for this purpose:
 I chose to use fclose's address for the leak.
 A few remark before we leak that address:
 
-	* strlen will stop at `\x00`, and we need at least 8 bytes being printed to be sure we did not miss one.
-	* We need to put the parameter for strlen in the `RDI` register.
-	* write uses `local_150h` for second parameter which is rbp-0x150.
+ * strlen will stop at `\x00`, and we need at least 8 bytes being printed to be sure we did not miss one.
+ * We need to put the parameter for strlen in the `RDI` register.
+ * write uses `local_150h` for second parameter which is rbp-0x150.
 
 
 ### Finding a 8 byte long string null terminated
