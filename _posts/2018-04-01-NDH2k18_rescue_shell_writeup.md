@@ -274,7 +274,7 @@ Fair enough! The plan is:
  5 ???
  6 profit!
 
-## EIP overwriting
+## RIP overwriting
 
 For this step, I used gdb along with [wapiflapi's gxf](https://github.com/wapiflapi/gxf) extension.
 
