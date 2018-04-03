@@ -415,7 +415,7 @@ $1 = {<text variable, no debug info>} 0x695e0 <fclose>
 
 One_gadget is **the** one gadget you can find in the libc that performs the simple and wonderful task of `execve("/bin/sh", rsp+0x30, environ)`
 
-There is a useful tool on github that allows to search for it easily: https://github.com/david942j/one_gadget
+There is a [useful tool on github](https://github.com/david942j/one_gadget) that allows to search for it easily.
 
 Using it is fairly simple:
 
@@ -497,7 +497,7 @@ if __name__=='__main__':
     target.pwned()
 ```
 
-Binexpect is a module that wraps pexpect that you can find at https://github.com/wapiflapi/binexpect
+Binexpect is a module that wraps pexpect that you can find on [github](https://github.com/wapiflapi/binexpect)
 
 ## Profit
 
