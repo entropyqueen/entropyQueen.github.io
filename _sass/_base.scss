@@ -11,11 +11,11 @@ body {
 }
 a {
 	text-decoration: none;
-	color: #c50;
+	color: #b0a;
 }
 a:hover, a:focus {
 	text-decoration:underline;
-	color: #965;
+	color: #959;
 }
 blockquote {
 	background: #FFF;
@@ -28,7 +28,7 @@ code,pre {
 	font-size: $code-font-size;
 }
 code {
-	color: #6c5;
+	color: #493;
 	background-color: #444;
 	padding: 2px 5px;
 	border-radius: 5px;
@@ -38,7 +38,7 @@ pre {
 	padding: 20px 50px;
 }
 pre, pre code {
-	color: #6c5;
+	color: #493;
 	background-color: #444;
 }
 pre code {
