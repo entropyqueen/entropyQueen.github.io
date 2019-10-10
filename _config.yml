@@ -1,17 +1,17 @@
 # Site settings
-title: "ArkSec"
+title: "eq's blog"
 url: ""    # the protocol and hostname of your site, eg. `http://laobubu.github.io`
 baseurl: "" # the prefix of your site uri, eg. `/jekyll-theme-EasyBook` or just one slash `/`
 #timezone: Asia/Chongqing
 description: >
-    IT security and proof of concept.    
+    IT security, probablty music and stuff.    
 
 # Your information
-email: quentrg@gmail.com
-author: ark
+email: emy.rg@protonmail.com
+author: eq
 avatar: "/images/psyduck.png"
 profile: 
-twitter_username: Ark_444
+twitter_username: entropyqueen_
 github_username: Ark444
 
 # Comment Service (Disqus or 多说)
