@@ -1,4 +1,3 @@
-
 ---
 layout: post
 title: "SIGSEGv2 Little Secret Detected Writeup poem"
