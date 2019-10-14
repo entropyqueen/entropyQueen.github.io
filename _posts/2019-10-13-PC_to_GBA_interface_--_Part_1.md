@@ -47,7 +47,7 @@ The first idea that came to my mind when trying to understand how it is done was
 
 ### EXT port
 
-Well, I don't really know what to say except that: it's ugly but it works ¯\_(ツ)_/¯
+Well, I don't really know what to say except that: it's ugly but it works ¯\\_(ツ)_/¯
 
 ![soldering EXT port](/images/posts/pc2gba/soldering.jpg "EXT port GBA soldering")
 
@@ -151,16 +151,16 @@ This produces two folder: `sys` and `files`
 $ ll *
 files:
 total 8.0K
-drwxr-xr-x 1 ark ark 1.8K Oct 12 09:09 GC4Sword_pal/
--rw-r--r-- 1 ark ark 8.0K Oct 12 08:25 opening.bnr
+drwxr-xr-x 1 emy emy 1.8K Oct 12 09:09 GC4Sword_pal/
+-rw-r--r-- 1 emy emy 8.0K Oct 12 08:25 opening.bnr
 
 sys:
 total 5.0M
--rw-r--r-- 1 ark ark 120K Oct 12 08:25 apploader.img
--rw-r--r-- 1 ark ark 8.0K Oct 12 08:25 bi2.bin
--rw-r--r-- 1 ark ark 1.1K Oct 12 08:25 boot.bin
--rw-r--r-- 1 ark ark 9.4K Oct 12 08:25 fst.bin
--rw-r--r-- 1 ark ark 4.9M Oct 12 08:25 main.dol
+-rw-r--r-- 1 emy emy 120K Oct 12 08:25 apploader.img
+-rw-r--r-- 1 emy emy 8.0K Oct 12 08:25 bi2.bin
+-rw-r--r-- 1 emy emy 1.1K Oct 12 08:25 boot.bin
+-rw-r--r-- 1 emy emy 9.4K Oct 12 08:25 fst.bin
+-rw-r--r-- 1 emy emy 4.9M Oct 12 08:25 main.dol
 ```
 
 The `sys` folder contains the actual game program, here named `main.dol`. It appears that depending on the version of dolphin-emu, the sys files are not produced in the same manner. (I got a `boot.dol` on another computer)
@@ -179,18 +179,18 @@ From this point, sure, we could RE the main.dol file. But it's huge and I am laz
 
 ```bash
  $ ll files/*
--rw-r--r-- 1 ark ark 8.0K Oct 12 08:25 files/opening.bnr
+-rw-r--r-- 1 emy emy 8.0K Oct 12 08:25 files/opening.bnr
 
 files/GC4Sword_pal:
 total 16M
-drwxr-xr-x 1 ark ark   34 Oct 12 08:25 Agb/
-drwxr-xr-x 1 ark ark   62 Oct 12 08:25 AudioRes/
-drwxr-xr-x 1 ark ark 6.4K Oct 12 08:25 Boss/
--rw-r--r-- 1 ark ark 3.3K Oct 12 08:25 cardicon.arc
-drwxr-xr-x 1 ark ark   44 Oct 12 08:52 cardicon.arc_dir/
--rw-r--r-- 1 ark ark 1.2M Oct 12 08:25 data.arc
--rw-r--r-- 1 ark ark 136K Oct 12 08:25 entry.arc
--rw-r--r-- 1 ark ark 138K Oct 12 08:25 entryFrench.arc
+drwxr-xr-x 1 emy emy   34 Oct 12 08:25 Agb/
+drwxr-xr-x 1 emy emy   62 Oct 12 08:25 AudioRes/
+drwxr-xr-x 1 emy emy 6.4K Oct 12 08:25 Boss/
+-rw-r--r-- 1 emy emy 3.3K Oct 12 08:25 cardicon.arc
+drwxr-xr-x 1 emy emy   44 Oct 12 08:52 cardicon.arc_dir/
+-rw-r--r-- 1 emy emy 1.2M Oct 12 08:25 data.arc
+-rw-r--r-- 1 emy emy 136K Oct 12 08:25 entry.arc
+-rw-r--r-- 1 emy emy 138K Oct 12 08:25 entryFrench.arc
 [...]
 ```
 
@@ -213,7 +213,7 @@ Which can then be run in an emulator:
 $ mgba client_thread.arc.extracted/archive/agb/client_thread.bin
 ```
 
-![mgba client_thread](images/posts/pc2gba/mgbaclient.png "Running the exctracted code with mgba")
+![mgba client_thread](/images/posts/pc2gba/mgbaclient.png "Running the exctracted code with mgba")
 
 
 And see you in part 2 for the actual reverse engineering :)
