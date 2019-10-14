@@ -10,9 +10,12 @@ date: 2019-10-13 23:43:17 +0200
 modified: 2019-10-13 23:43:17 +0200
 ---
 
-A little while ago I tweeted about a project where I was showing the picture of a GameBoy Advance (GBA) on which I soldered a few cables onto the serial port. The idea behing this was to make an interface between the GBA and my computer so that I could use it as an alternative controller and screen. This post is more a log book rather than a straight to the point technical document. I like to tell stories and I believe showing the errors made and paths taken is always interesting.
+A little while ago I tweeted about a project where I was showing the picture of a GameBoy Advance (GBA) on which I soldered a few cables onto the serial port. The idea behing this was to make an interface between the GBA and my computer so that I could use it as an alternative controller and screen.  
+This post is more a log book rather than a straight to the point technical document. I like to tell stories and I believe showing the errors made and paths taken is always interesting.
 
 ![tweet pic](/images/posts/pc2gba/tweetpic.jpg "GBA hydrabus sniffing")
+
+
 
 # Introduction
 
@@ -21,18 +24,30 @@ This triggered two things in my brain: the need to know how it works, and of cou
 
 At the time of writing, I have made some progress but my goal isn't yet reached. This post is only the beggining and I don't know when I'll finish. However I thought that I should share the informations and experimentations I've done until now.
 
+
+
 ## Zelda four sword adventure
 
 When I was younger I bought this GameCube game: Zelda four sword adventure. It was great, and as a Zelda fan I liked it a lot! And yes I still have it to this day! :D
 
+
+
 ![zelda four sword adventure](/images/posts/pc2gba/zelda4swda.jpg "Zelda: four sword adventure")
+
+
 
 But the important thing about this game is that little yellow stamp that you can see on the bottom left, next to the PEGI sign.  
 If you add a GBA and the cable to connect it to the GC, it was possible to play using the GBA as a controller. And even better, if you use this, when entering a room, the room's screen was displayed on the GBA screen while the outside was still on the TV!
 
+
+
 ![zelda in game](/images/posts/pc2gba/zeldaingame.jpg "Zelda in game")
 
+
+
 Now that I think about it, Nintendo had the idea for the Wii U and the Switch a long time ago! 
+
+
 
 ## GC <-> GBA Cable link
 
@@ -107,13 +122,21 @@ In fact, it has an internal buffer that can store a few samples and sends it to 
 Okay, getting the first frames is easy: let's plug the GBA to the GC using the link cable, we then switch the GC on, running the game. Now click `run` in pulseview and switch the GBA on.  
 During my first attempt, I forgot to set a trigger on `Vcc` so all lines were low. After correcting this small mistake, we get the following data:
 
+
+
 ![initial capture](/images/posts/pc2gba/firstcapture2mhz.png "Initial capture at 2MHz")
+
+
 
 Fair enough, let's get some more data and we'll analyse it all later!
 
 #### Another chunk of frames
 
+
+
 ![capture 2MHz](/images/posts/pc2gba/capture2mhz.png "Another capture at 2MHz")
+
+
 
 It looks about right, doesn't it? Well, sorry to spoil it for you, but no it isn't right. And this is were I encountered my first real issue with this process.
 
