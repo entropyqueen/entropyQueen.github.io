@@ -10,7 +10,7 @@ date: 2019-10-13 23:43:17 +0200
 modified: 2019-10-13 23:43:17 +0200
 ---
 
-A little while ago I tweeted about a project where I was showing the picture of a GameBoy Advance (GBA) on which I soldered a few cables onto the serial port. The idea behing this was to make an interface between the GBA and my computer so that I could use it as an alternative controller and screen.  
+A little while ago I tweeted about a project where I was showing the picture of a GameBoy Advance (GBA) on which I soldered a few cables onto the serial port. The idea behind this was to make an interface between the GBA and my computer so that I could use it as an alternative controller and screen.  
 This post is more a log book rather than a straight to the point technical document. I like to tell stories and I believe showing the errors made and paths taken is always interesting.
 
 ![tweet pic](/images/posts/pc2gba/tweetpic.jpg "GBA hydrabus sniffing")
