@@ -1,4 +1,3 @@
-
 ---
 layout: post
 title: "Setting up 2FA on Linux with PAM"
@@ -7,7 +6,7 @@ excerpt:
 tags: []
 image:
   feature:
-date: 2018-02-04 14:31:18 +0200
+date: 2020-07-14 14:31:18 +0200
 modified: 2019-07-14 17:40:00 +0200
 ---
 
