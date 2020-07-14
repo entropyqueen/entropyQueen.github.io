@@ -17,19 +17,19 @@ Quick post to explain how I setup my Two Factor Authentication on Linux using a 
 # Install
 
 To set up 2FA using the yubikey and PAM, we will need a few software.
-There is a [PAM module already existing, provided by Yubico on GitHub][github_pam_u2f].
+There is a [PAM module already existing, provided by Yubico on GitHub](https://github.com/Yubico/pam-u2f).
   
 Since I'm running on ArchLinux, I directly installed everything from the official repository. 
 
 ## the easy way
 
 ```bash
-# pacman -S pam_u2f
+$ pacman -S pam_u2f
 ```
 
 ## the slightly harder way (but not that hard anyway)
 
-Clone the github repository: [https://github.com/Yubico/pam-u2f][github_pam_u2f]
+Clone the github repository: [pam-u2f](https://github.com/Yubico/pam-u2f)
 
 ```bash
 $ git clone git://github.com/Yubico/pam-u2f.git
